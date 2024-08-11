@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <section class="vh-100 bg-image"
+    style="background-image: url('https://images.pexels.com/photos/212324/pexels-photo-212324.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                <form method="POST" onsubmit="validateForm()">
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="email">Your Email</label>
+                    <input type="email" name="email" id="email" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="first_name">First Name</label>
+                    <input type="text" name="first_name" id="first_name" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="last_name">Last Name</label>
+                    <input type="text" name="last_name" id="last_name" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" name="password" id="password" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="repeat_password">Repeat Password</label>
+                    <input type="password" name="repeat_password" id="repeat_password" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-check d-flex justify-content-center mb-5"> 
+                    <input class="form-check-input me-2" type="checkbox" id="admin_check" onclick="adminCheck()">
+                    <label class="form-check-label" for="admin_check">Are you Admin?&nbsp;</label>
+                    <input type="text" name="admin_code" id="admin_code" placeholder="Input your admin code" style="display:none"> 
+                </div> 
+
+                <div class="form-check d-flex justify-content-center mb-5">
+                    <input class="form-check-input me-2" type="checkbox" id="checkbox" onclick="myFunction()">
+                    <label class="form-check-label" for="checkbox">
+                    I agree all statements in <a href="/terms" class="text-body"><u>Terms of service</u></a>
+                    </label>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <input type="submit" id="submit" style="display:none"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" value="Register">
+                </div>
+                </form>
+
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    </section>
+    <script>
+        function adminCheck() {
+        var admin_check = document.getElementById("admin_check");
+        var admin_code = document.getElementById("admin_code");
+        if (admin_check.checked == true){
+            admin_code.style.display = "block";
+        } else {
+            admin_code.style.display = "none";
+        }
+        }
+
+
+        function myFunction() {
+        var checkBox = document.getElementById("checkbox");
+        var submit = document.getElementById("submit");
+        if (checkBox.checked == true){
+            submit.style.display = "block";
+        } else {
+            submit.style.display = "none";
+        }
+        }
+
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var repeatPassword = document.getElementById("repeat_password").value;
+        
+            if (password !== repeatPassword) {
+                alert("Passwords do not match!");
+                return false;
+            }
+        
+            return true;
+        }
+      </script>
+{% endblock %}

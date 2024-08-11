@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <br>
+  <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+      
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <a href="{{ url_for('facts') }}"><img src="/static/facts.jpg" alt="facts" class="d-block" style="margin-left: auto;margin-right: auto;width: 1250px;height: 500px;;"></a>
+        <div class="carousel-caption">
+          <h3>Check Greenhouse Gas Emission in Dutch</h3>
+          <p>We have listed the data relevant to it from 1979 to 2022!</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <a href="{{ url_for('solutions') }}"><img src="/static/solutions.jpg" alt="solutions" class="d-block" style="margin-left: auto;margin-right: auto;width: 1250px;height: 500px;"></a>
+        <div class="carousel-caption">
+          <h3>What the government do</h3>
+          <p>In order to reduce GHG emissions, the Dutch government havs done a lot, let's see them!</p>
+        </div> 
+      </div>
+      <div class="carousel-item">
+        <a href="{{ url_for('community') }}"><img src="/static/community.jpg" alt="community" class="d-block" style="margin-left: auto;margin-right: auto;width: 1250px;height: 500px;"></a>
+        <div class="carousel-caption">
+          <h3>Join us</h3>
+          <p>We need your reactions to protect the environment!</p>
+        </div>  
+      </div>
+    </div>
+      
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+
+  </div>
+  <br><br><br><br><br><br>
+
+{% endblock %}
+
+

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <br><h1>Welcom to our Community!</h1>
+    {% if session['login'] == false %}
+    <h5>Register to comment :)</h5>
+    {% else %}
+    <h5>Welcome to comment :)</h5>
+    {% endif %}
+
+    <hr>
+    {% for forum in forums %}
+        <h6>Topic: {{ forum['topic'] }} by {{ forum['user_email'] }}<br>
+        {% if session['login'] and session['is_admin'] %}
+                <form action="{{ url_for('delete_forum', forum_id=forum['id']) }}" method="POST">
+                    <input type="image" src="/static/bin.png" width="25px" height="25px" alt="DELETE TOPIC" onclick="return confirm('Delete this Topic?')">
+                </form>
+        {% endif %}
+        {% for comment in find_comments_by_forum_id(forum, comments) %}
+            - {{ find_user_by_email(users, comment['user_email'])['first_name'] }}: {{ comment['comment'] }} <br/>
+            {% if session['login'] and session['is_admin'] %}
+            <form action="{{ url_for('delete_comment', comment_id=comment['id']) }}" method="POST">
+                <input type="image" src="/static/bin.png" width="25px" height="25px" alt="DELETE COMMENT" onclick="return confirm('Delete this comment?')">
+            </form>
+            {% endif %}
+        {% endfor %}
+        {% if session['login'] %}
+            <a href="{{ url_for('create_comment', forum_id=forum['id']) }}">New Comment</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login to Comment</a>
+        {% endif %}
+
+    <hr/>
+    {% endfor %}
+
+    {% if session['login'] and session['is_admin'] %}
+        <a href="{{ url_for('create_forum') }}">New Post</a>
+    {% endif %}
+
+    <hr/>
+{% endblock %}

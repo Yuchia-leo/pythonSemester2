@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<h1>How to change password?</h1><br>
+<h6>
+        - make sure local email server (aiosmtpd) is started and running as above<br>
+    
+        - Sign in -> Forgot password? -> enter Email -> Forgot Password page<br>
+    
+        -> then go to command line console to get aiosmtpd SMTP server's email output as follows<br>
+    
+            ---------- MESSAGE FOLLOWS ----------<br>
+            Subject: forgot password<br>
+            From: admin<br>
+            To: z@z<br>
+            Content-Type: text/plain; charset="utf-8"<br>
+            Content-Transfer-Encoding: 7bit<br>
+            MIME-Version: 1.0<br>
+            X-Peer: ('::1', 63517, 0, 0)<br>
+    
+            temporary password: da5178ca5fb24bae8d729e5c02eee56e<br>
+            ------------ END MESSAGE ------------<br>
+    
+        -> copy temporary password: da5178ca5fb24bae8d729e5c02eee56e to Forgot Password page<br>
+        -> continue on Reset Password<br>
+</h6>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}
